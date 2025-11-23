@@ -1,15 +1,180 @@
-body {
-    background: #121212;
-    color: white;
-    font-family: Arial;
-    padding: 20px;
+/* Custom CSS Variables for easy color adjustments */
+:root {
+    --primary-color: #4A90E2;      /* Medium Blue for accents */
+    --secondary-color: #2ECC71;    /* Green for success/done */
+    --delete-color: #E74C3C;       /* Red for delete */
+    --background-color: #F4F7F6;   /* Light gray/off-white background */
+    --card-bg: #FFFFFF;            /* Pure white for cards */
+    --text-color: #333333;         /* Dark text */
+    --input-bg: #F0F0F0;           /* Very light gray for input field */
+    --border-color: #DDDDDD;       /* Light border line */
 }
 
+/* General body and typography */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* App heading */
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Input area container */
+.input-area {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 600px; /* Wider max-width for modern feel */
+}
+
+/* Input field */
+#taskInput {
+    flex: 1;
+    padding: 14px 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    background: var(--input-bg);
+    outline: none;
+    font-size: 1.1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#taskInput:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+    background: var(--card-bg);
+}
+
+/* Add button */
+#addBtn {
+    padding: 14px 25px;
+    border-radius: 10px;
+    border: none;
+    background: var(--primary-color);
+    color: var(--card-bg); /* White text on blue button */
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+}
+
+#addBtn:hover {
+    background: #3A7BBF;
+    transform: translateY(-1px);
+}
+
+/* Task list container */
+#task-list {
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Each task box */
 .task {
-    background: #1e1e1e;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 6px;
+    background: var(--card-bg);
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+    transition: box-shadow 0.2s, transform 0.2s;
+    border-left: 5px solid transparent; /* Space for status highlight */
+}
+
+.task:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Task description */
+.task span {
+    font-size: 1.1rem;
+    flex-grow: 1;
+    margin-right: 15px;
+}
+
+/* Completed task style */
+.completed {
+    border-left-color: var(--secondary-color);
+    opacity: 0.7;
+}
+
+.completed span {
+    text-decoration: line-through;
+    color: #999999;
+}
+
+/* Buttons container */
+.task-buttons {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* Buttons inside task */
+.task button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+/* Toggle (Done/Undo) button */
+.task .toggle-btn {
+    background: var(--secondary-color);
+    color: var(--card-bg);
+}
+
+.task .toggle-btn:hover {
+    background: #27AE60;
+}
+
+/* Delete button */
+.task .delete-btn {
+    background: var(--delete-color);
+    color: var(--card-bg);
+}
+
+.task .delete-btn:hover {
+    background: #C0392B;
+}
+
+/* Responsive adjustments */
+@media (max-width: 650px) {
+    .input-area {
+        flex-direction: column;
+    }
+    #taskInput, #addBtn {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .task {
+        flex-wrap: wrap;
+    }
+    .task span {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .task-buttons {
+        width: 100%;
+        justify-content: flex-end;
+    }
 }

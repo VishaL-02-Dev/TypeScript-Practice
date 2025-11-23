@@ -1,5 +1,5 @@
-import { Todo } from "../models/Todo";
-import { Task } from "../models/Task";
+import { Todo } from "../models/Todo.js";
+import { Task } from "../models/Task.js";
 
 export class TodoManager {
     constructor(private todo: Todo) {}
