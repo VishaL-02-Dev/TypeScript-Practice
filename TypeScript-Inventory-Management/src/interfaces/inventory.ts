@@ -1,5 +1,5 @@
 export interface IInventory{
     name: string;
-    quantity: string;
+    quantity: number;
     price: number;
 }
