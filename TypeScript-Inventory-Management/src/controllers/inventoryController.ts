@@ -9,6 +9,10 @@ export class InventoryController{
         res.render("index",{items});
     };
 
+    createPage(req: Request, res: Response) {
+    res.render("create");
+    }
+
     create = async(req:Request,res:Response)=>{
         const item = await this.service.addItem(req.body);
         res.redirect("/");
